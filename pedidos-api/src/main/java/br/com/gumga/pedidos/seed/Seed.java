@@ -28,14 +28,9 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 			try {
 				seed.loadSeed();
 			} catch (IOException e) {
-
-
 				throw new RuntimeException(e);
-
-
 			}
 		}
-		
 		started.set(true);
 	}
 	
@@ -44,5 +39,4 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 		list.add(pedidoSeed);
 		return list;
 	}
-
 }
