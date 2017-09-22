@@ -18,16 +18,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 
-	private AtomicBoolean started = new AtomicBoolean(false);
+    private AtomicBoolean started = new AtomicBoolean(false);
 
     @Autowired
     private ClienteSeed clienteSeed;
-        
+
     @Autowired
     private GrupoClientesSeed grupoSeed;
 
-	@Autowired
-	private PedidoSeed pedidoSeed;
+    @Autowired
+    private PedidoSeed pedidoSeed;
 
     @Autowired
     private ItemPedidoSeed itemPedidoSeed;
@@ -39,28 +39,28 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
     private CategoriaSeed categoriaSeed;
 
 
-	public void onApplicationEvent(ContextRefreshedEvent event) {
-		if (started.get()) return;
-		
-		for (AppSeed seed : seeds()) {
-			try {
-				seed.loadSeed();
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-		}
-		started.set(true);
-	}
+    public void onApplicationEvent(ContextRefreshedEvent event) {
+        if (started.get()) return;
+
+        for (AppSeed seed : seeds()) {
+            try {
+                seed.loadSeed();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        started.set(true);
+    }
 
 
-	private List<AppSeed> seeds() {
-		List<AppSeed> list = new LinkedList<>();
-		list.add(grupoSeed);
-		list.add(clienteSeed);
-		list.add(pedidoSeed);
-		list.add(itemPedidoSeed);
-		list.add(produtoSeed);
-		list.add(categoriaSeed);
-		return list;
-	}
+    private List<AppSeed> seeds() {
+        List<AppSeed> list = new LinkedList<>();
+        list.add(grupoSeed);
+        list.add(clienteSeed);
+        list.add(pedidoSeed);
+        list.add(itemPedidoSeed);
+        list.add(produtoSeed);
+        list.add(categoriaSeed);
+        return list;
+    }
 }
