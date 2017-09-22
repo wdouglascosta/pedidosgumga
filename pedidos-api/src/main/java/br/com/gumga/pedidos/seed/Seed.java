@@ -25,14 +25,9 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 			try {
 				seed.loadSeed();
 			} catch (IOException e) {
-
-
 				throw new RuntimeException(e);
-
-
 			}
 		}
-		
 		started.set(true);
 	}
 	
@@ -40,5 +35,4 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 		List<AppSeed> list = new LinkedList<>();
 		return list;
 	}
-
 }
