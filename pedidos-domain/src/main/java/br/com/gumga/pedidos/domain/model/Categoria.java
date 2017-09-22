@@ -29,6 +29,7 @@ public class Categoria extends GumgaModel<Long> {
     @Column(name = "nome")
 	private String nome;
 
+
     public Categoria() {}
 
 	public Categoria(GumgaOi oi, String nome) {
