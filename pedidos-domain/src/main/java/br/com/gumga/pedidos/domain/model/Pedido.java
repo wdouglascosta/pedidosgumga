@@ -25,11 +25,15 @@ public class Pedido extends GumgaModel<Long> {
 	@JsonIgnoreProperties({"pedido"})
     private List<ItemPedido> itens;
 
+    @OneToOne
+    private Cliente clientes;
+
     public Pedido() {}
 
-    public Pedido(GumgaOi oi, Cliente cliente, List<ItemPedido> itens) {
+    public Pedido(GumgaOi oi, List<ItemPedido> itens, Cliente clientes) {
         super(oi);
         this.itens = itens;
+        this.clientes = clientes;
     }
 
     public List<ItemPedido> getItens() {
@@ -38,5 +42,13 @@ public class Pedido extends GumgaModel<Long> {
 
     public void setItens(List<ItemPedido> itens) {
         this.itens = itens;
+    }
+
+    public Cliente getCliente() {
+        return clientes;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.clientes = cliente;
     }
 }

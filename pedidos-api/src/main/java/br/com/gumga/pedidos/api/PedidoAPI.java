@@ -28,11 +28,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Transactional
 public class PedidoAPI extends GumgaAPI<Pedido, Long> {
 
-
-@Autowired
-public PedidoAPI(PedidoService service) {
+    @Autowired
+    public PedidoAPI(PedidoService service) {
     super(service);
 }
-
-
 }

@@ -17,12 +17,11 @@ public class ItemPedidoSeed implements AppSeed{
 
     @Override
     public void loadSeed() throws IOException {
-
         if (itemPedidoService.exists()){
             return;
         }
 
-        ItemPedido itemPedido1 = new ItemPedido(GumgaOi.MARK_PUBLIC,15,null);
+        ItemPedido itemPedido1 = new ItemPedido(GumgaOi.MARK_PUBLIC,5,null,null);
 
         itemPedidoService.save(itemPedido1);
     }
