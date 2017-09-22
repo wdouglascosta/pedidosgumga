@@ -49,8 +49,8 @@ public class PedidoSeed implements AppSeed {
         
         for (Produto produto:values){
             ItemPedido ip=new ItemPedido(4, produto);
-            itemPedidoService.save(ip);
-            p.getItens().add(ip);
+
+            p.getItens().add(itemPedidoService.save(ip));
         }
         
         pedidoService.save(p);

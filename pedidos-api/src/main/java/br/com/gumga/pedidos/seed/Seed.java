@@ -49,11 +49,11 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 
     private List<AppSeed> seeds() {
         List<AppSeed> list = new LinkedList<>();
+        list.add(categoriaSeed);
+        list.add(produtoSeed);
         list.add(grupoSeed);
         list.add(clienteSeed);
         list.add(pedidoSeed);
-        list.add(produtoSeed);
-        list.add(categoriaSeed);
         return list;
     }
 }
