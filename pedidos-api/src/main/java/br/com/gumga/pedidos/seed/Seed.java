@@ -12,12 +12,19 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 
 	private AtomicBoolean started = new AtomicBoolean(false);
 
+        @Autowired
+        private ClienteSeed clienteSeed;
+        
+        @Autowired
+        private GrupoClientesSeed grupoSeed;
+        
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		if (started.get()) return;
 		
@@ -32,10 +39,12 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 		started.set(true);
 	}
 	
-	
+	@Transactional
 	private List<AppSeed> seeds() {
 		List<AppSeed> list = new LinkedList<>();
-		return list;
+		list.add(grupoSeed);
+                list.add(clienteSeed);
+                return list;
 	}
 
 }
