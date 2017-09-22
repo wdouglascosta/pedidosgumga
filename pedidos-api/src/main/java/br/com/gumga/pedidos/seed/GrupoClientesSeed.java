@@ -29,10 +29,11 @@ public class GrupoClientesSeed implements AppSeed {
     @Transactional
     @Override
     public void loadSeed() throws IOException {
-        
-        GrupoClientes grupoClientes = new GrupoClientes("Clientes Platinum", "Platinum", GumgaOi.MARK_PUBLIC);  
-        clientesService.save(grupoClientes);
-        
+
+        clientesService.save( new GrupoClientes("Clientes Platinum", "Platinum"));
+        clientesService.save( new GrupoClientes("Clientes Silver", "Silver"));
+        clientesService.save( new GrupoClientes("Clientes Gold", "Gold"));
+
 
     }
     

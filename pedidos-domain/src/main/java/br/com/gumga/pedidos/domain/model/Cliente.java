@@ -1,4 +1,5 @@
 package br.com.gumga.pedidos.domain.model;
+
 import io.gumga.domain.GumgaModel; //TODO RETIRAR OS IMPORTS DESNECESS�RIOS
 import io.gumga.domain.GumgaMultitenancy;
 import java.io.Serializable;
@@ -26,20 +27,48 @@ public class Cliente extends GumgaModel<Long> {
     @Column(name = "version")
     private Integer version;
 
+    @Column(name = "nome")
+    private String nome;
+
     @Column(name = "cidade")
-	private String cidade;
+    private String cidade;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<GrupoClientes> grupoClientes;
 
-    public Cliente(String cidade, List<GrupoClientes> grupoClientes, GumgaOi oi) {
-        super(oi);
+    public Cliente() {
+    }
+
+    public Cliente(String nome, String cidade, List<GrupoClientes> grupoClientes) {
+        this.nome = nome;
         this.cidade = cidade;
         this.grupoClientes = grupoClientes;
     }
 
-        
-    
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
     public List<GrupoClientes> getGrupoClientes() {
         return grupoClientes;
     }
@@ -49,13 +78,5 @@ public class Cliente extends GumgaModel<Long> {
     }
     
     
-    
-    public Cliente() {}
 
-	public String getCidade() {
-		return this.cidade;
-	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
 }

@@ -17,23 +17,24 @@ import java.util.List;
 })
 @SequenceGenerator(name = GumgaModel.SEQ_NAME, sequenceName = "SEQ_Pedido")
 public class Pedido extends GumgaModel<Long> {
+
     @Version
     @Column(name = "version")
     private Integer version;
 
     @OneToMany
-	@JsonIgnoreProperties({"pedido"})
+    @JsonIgnoreProperties({"pedido"})
     private List<ItemPedido> itens;
 
-    @OneToOne
-    private Cliente clientes;
+    @ManyToOne
+    private Cliente cliente;
 
-    public Pedido() {}
+    public Pedido() {
+    }
 
-    public Pedido(GumgaOi oi, List<ItemPedido> itens, Cliente clientes) {
-        super(oi);
+    public Pedido(List<ItemPedido> itens, Cliente cliente) {
         this.itens = itens;
-        this.clientes = clientes;
+        this.cliente = cliente;
     }
 
     public List<ItemPedido> getItens() {
@@ -45,10 +46,10 @@ public class Pedido extends GumgaModel<Long> {
     }
 
     public Cliente getCliente() {
-        return clientes;
+        return cliente;
     }
 
     public void setCliente(Cliente cliente) {
-        this.clientes = cliente;
+        this.cliente = cliente;
     }
 }

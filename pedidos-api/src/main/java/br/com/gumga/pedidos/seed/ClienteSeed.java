@@ -14,6 +14,7 @@ import io.gumga.domain.domains.GumgaOi;
 import io.gumga.domain.seed.AppSeed;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,13 +40,10 @@ public class ClienteSeed implements AppSeed{
         
         
         QueryObject queryObject = new QueryObject();
-        queryObject.setAq("obj.privilegio= 'Platinum'");
-        GrupoClientes grupoClientes = clientesService.pesquisa(queryObject).getValues().get(0);  
+        List<GrupoClientes> grupoClientes = clientesService.pesquisa(queryObject).getValues();  
         
-        Cliente cliente = new Cliente("Maringa", Arrays.asList(grupoClientes), GumgaOi.MARK_PUBLIC);
+        Cliente cliente = new Cliente("Fulano","Maringa", grupoClientes);
         clienteService.save(cliente);
-        
-        //ticket 99 feito
         
     }
     

@@ -12,10 +12,10 @@ import javax.persistence.*;
 @Audited
 @Entity(name = "ItemPedido")
 @Table(name = "ItemPedido", indexes = {
-        @Index(name = "ItemPedido_gum_oi", columnList = "oi")
+    @Index(name = "ItemPedido_gum_oi", columnList = "oi")
 })
 @SequenceGenerator(name = GumgaModel.SEQ_NAME, sequenceName = "SEQ_ItemPedio")
-public class ItemPedido extends GumgaModel<Long>{
+public class ItemPedido extends GumgaModel<Long> {
 
     @Version
     @Column(name = "version")
@@ -25,19 +25,13 @@ public class ItemPedido extends GumgaModel<Long>{
     private Integer quantidade;
 
     @ManyToOne
-    @JsonIgnoreProperties({"itens"})
-    private Pedido pedido;
-
-    @OneToOne
     private Produto produto;
 
     public ItemPedido() {
     }
 
-    public ItemPedido(GumgaOi oi, Integer quantidade, Pedido pedido, Produto produto) {
-        super(oi);
+    public ItemPedido(Integer quantidade, Produto produto) {
         this.quantidade = quantidade;
-        this.pedido = pedido;
         this.produto = produto;
     }
 
@@ -47,14 +41,6 @@ public class ItemPedido extends GumgaModel<Long>{
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
-    }
-
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
     }
 
     public Produto getProduto() {

@@ -1,4 +1,5 @@
 package br.com.gumga.pedidos.domain.model;
+
 import io.gumga.domain.GumgaModel; //TODO RETIRAR OS IMPORTS DESNECESSÁRIOS
 import io.gumga.domain.GumgaMultitenancy;
 import java.io.Serializable;
@@ -27,22 +28,20 @@ public class Categoria extends GumgaModel<Long> {
     private Integer version;
 
     @Column(name = "nome")
-	private String nome;
+    private String nome;
 
+    public Categoria() {
+    }
 
-    public Categoria() {}
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
 
-	public Categoria(GumgaOi oi, String nome) {
-		super(oi);
-		this.nome = nome;
-	}
+    public String getNome() {
+        return this.nome;
+    }
 
-
-
-	public String getNome() {
-		return this.nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

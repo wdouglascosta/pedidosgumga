@@ -1,4 +1,5 @@
 package br.com.gumga.pedidos.domain.model;
+
 import io.gumga.domain.GumgaModel; //TODO RETIRAR OS IMPORTS DESNECESS�RIOS
 import io.gumga.domain.GumgaMultitenancy;
 import java.io.Serializable;
@@ -25,29 +26,28 @@ public class GrupoClientes extends GumgaModel<Long> {
     @Version
     @Column(name = "version")
     private Integer version;
-    
-    @Column(name ="nomeGrupo")
+
+    @Column(name = "nomeGrupo")
     private String nomeGrupo;
 
     @Column(name = "privilegio")
-	private String privilegio;
+    private String privilegio;
 
-    public GrupoClientes(String nomeGrupo, String privilegio, GumgaOi oi) {
-        super(oi);      
+    public GrupoClientes() {
+    }
+
+    public GrupoClientes(String nomeGrupo, String privilegio) {
         this.nomeGrupo = nomeGrupo;
         this.privilegio = privilegio;
     }
-    
-    
 
-    public GrupoClientes() {}
+    public String getPrivilegio() {
+        return this.privilegio;
+    }
 
-	public String getPrivilegio() {
-		return this.privilegio;
-	}
-	public void setPrivilegio(String privilegio) {
-		this.privilegio = privilegio;
-	}
+    public void setPrivilegio(String privilegio) {
+        this.privilegio = privilegio;
+    }
 
     public String getNomeGrupo() {
         return nomeGrupo;
@@ -56,6 +56,5 @@ public class GrupoClientes extends GumgaModel<Long> {
     public void setNomeGrupo(String nomeGrupo) {
         this.nomeGrupo = nomeGrupo;
     }
-        
-        
+
 }
