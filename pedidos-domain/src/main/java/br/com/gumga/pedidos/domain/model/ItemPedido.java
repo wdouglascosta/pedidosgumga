@@ -28,12 +28,17 @@ public class ItemPedido extends GumgaModel<Long>{
     @JsonIgnoreProperties({"itens"})
     private Pedido pedido;
 
+    @OneToOne
+    private Produto produto;
+
     public ItemPedido() {
     }
 
-    public ItemPedido(GumgaOi oi, Integer quantidade, Pedido pedidos) {
+    public ItemPedido(GumgaOi oi, Integer quantidade, Pedido pedido, Produto produto) {
         super(oi);
         this.quantidade = quantidade;
+        this.pedido = pedido;
+        this.produto = produto;
     }
 
     public Integer getQuantidade() {
@@ -42,5 +47,21 @@ public class ItemPedido extends GumgaModel<Long>{
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 }
