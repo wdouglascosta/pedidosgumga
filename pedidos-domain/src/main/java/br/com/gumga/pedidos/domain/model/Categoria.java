@@ -31,6 +31,13 @@ public class Categoria extends GumgaModel<Long> {
 
     public Categoria() {}
 
+	public Categoria(GumgaOi oi, String nome) {
+		super(oi);
+		this.nome = nome;
+	}
+
+
+
 	public String getNome() {
 		return this.nome;
 	}

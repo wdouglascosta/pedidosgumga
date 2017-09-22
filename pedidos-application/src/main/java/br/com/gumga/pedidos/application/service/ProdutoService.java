@@ -12,6 +12,8 @@ import org.hibernate.Hibernate;
 import br.com.gumga.pedidos.application.repository.ProdutoRepository;
 import br.com.gumga.pedidos.domain.model.Produto;
 
+import java.util.List;
+
 
 @Service
 @Transactional
@@ -26,4 +28,11 @@ public class ProdutoService extends GumgaService<Produto, Long> {
         this.repository = repository;
     }
 
+    public boolean exists(){
+        return repository.count() > 0;
+    }
+
+    public List<Produto> saveAll(List<Produto> produtos){
+        return repository.save(produtos);
+    }
 }

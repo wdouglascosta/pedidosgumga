@@ -22,6 +22,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @SequenceGenerator(name = GumgaModel.SEQ_NAME, sequenceName = "SEQ_Produto")
 public class Produto extends GumgaModel<Long> {
 
+	@Column(name = "nome")
+	private String nome;
+
+	@Column(name = "quantidade")
+	private int quantidade;
+
+	@Column(name = "valor")
+	private BigDecimal valor;
+
     @Version
     @Column(name = "version")
     private Integer version;
@@ -29,7 +38,45 @@ public class Produto extends GumgaModel<Long> {
     @Column(name = "categoria")
 	private Categoria categoria;
 
-    public Produto() {}
+
+	public Produto(GumgaOi oi, String nome, int quantidade, BigDecimal valor, Categoria categoria) {
+		super(oi);
+		this.nome = nome;
+		this.quantidade = quantidade;
+		this.valor = valor;
+		this.categoria = categoria;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public String getNome() {
+
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+
+	public Produto() {}
 
 	public Categoria getCategoria() {
 		return this.categoria;

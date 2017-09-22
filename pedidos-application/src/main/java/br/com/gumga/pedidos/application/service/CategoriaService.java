@@ -12,6 +12,8 @@ import org.hibernate.Hibernate;
 import br.com.gumga.pedidos.application.repository.CategoriaRepository;
 import br.com.gumga.pedidos.domain.model.Categoria;
 
+import java.util.List;
+
 
 @Service
 @Transactional
@@ -24,6 +26,14 @@ public class CategoriaService extends GumgaService<Categoria, Long> {
     public CategoriaService(CategoriaRepository repository) {
         super(repository);
         this.repository = repository;
+    }
+
+    public boolean exists(){
+        return repository.count() > 0;
+    }
+
+    public List<Categoria> saveAll(List<Categoria> categorias){
+        return repository.save(categorias);
     }
 
 }
