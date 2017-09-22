@@ -1,5 +1,6 @@
 package br.com.gumga.pedidos.seed;
 
+import br.com.gumga.pedidos.domain.model.Produto;
 import io.gumga.domain.seed.AppSeed;
 
 import java.io.IOException;
@@ -23,6 +24,12 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
     private ItemPedidoSeed itemPedidoSeed;
+    //Alteração WDouglas
+    @Autowired
+    private ProdutoSeed produtoSeed;
+    //Alteração WDouglas
+    @Autowired
+    private CategoriaSeed categoriaSeed;
 
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		if (started.get()) return;
@@ -41,6 +48,8 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 		List<AppSeed> list = new LinkedList<>();
 		list.add(pedidoSeed);
 		list.add(itemPedidoSeed);
+		list.add(produtoSeed);
+		list.add(categoriaSeed);
 		return list;
 	}
 }
