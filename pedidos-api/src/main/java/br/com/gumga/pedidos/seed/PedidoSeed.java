@@ -30,7 +30,8 @@ public class PedidoSeed implements AppSeed {
 
         // tarefa 44
 
-        //  tafena nova
+        //  tafena nova completa
+        
         
 
 
