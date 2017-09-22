@@ -1,5 +1,6 @@
 package br.com.gumga.pedidos.seed;
 
+import br.com.gumga.pedidos.domain.model.Produto;
 import io.gumga.domain.seed.AppSeed;
 
 import java.io.IOException;
@@ -19,12 +20,25 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 
 	private AtomicBoolean started = new AtomicBoolean(false);
 
-        @Autowired
-        private ClienteSeed clienteSeed;
+    @Autowired
+    private ClienteSeed clienteSeed;
         
-        @Autowired
-        private GrupoClientesSeed grupoSeed;
-        
+    @Autowired
+    private GrupoClientesSeed grupoSeed;
+
+	@Autowired
+	private PedidoSeed pedidoSeed;
+
+    @Autowired
+    private ItemPedidoSeed itemPedidoSeed;
+    //Alteração WDouglas
+    @Autowired
+    private ProdutoSeed produtoSeed;
+    //Alteração WDouglas
+    @Autowired
+    private CategoriaSeed categoriaSeed;
+
+
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		if (started.get()) return;
 		
@@ -35,16 +49,18 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 				throw new RuntimeException(e);
 			}
 		}
-		
 		started.set(true);
 	}
-	
-	@Transactional
+
+
 	private List<AppSeed> seeds() {
 		List<AppSeed> list = new LinkedList<>();
 		list.add(grupoSeed);
-                list.add(clienteSeed);
-                return list;
+		list.add(clienteSeed);
+		list.add(pedidoSeed);
+		list.add(itemPedidoSeed);
+		list.add(produtoSeed);
+		list.add(categoriaSeed);
+		return list;
 	}
-
 }
