@@ -24,5 +24,9 @@ public class ItemPedidoSeed implements AppSeed{
         ItemPedido itemPedido1 = new ItemPedido(GumgaOi.MARK_PUBLIC,5,null,null);
 
         itemPedidoService.save(itemPedido1);
+
+
+        //HOT FIX
+        
     }
 }
