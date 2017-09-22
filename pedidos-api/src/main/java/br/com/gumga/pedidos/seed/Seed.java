@@ -1,5 +1,3 @@
-//teste conflito wd
-
 package br.com.gumga.pedidos.seed;
 
 import br.com.gumga.pedidos.domain.model.Produto;
@@ -15,11 +13,18 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 
     private AtomicBoolean started = new AtomicBoolean(false);
+
+    @Autowired
+    private ClienteSeed clienteSeed;
+
+    @Autowired
+    private GrupoClientesSeed grupoSeed;
 
     @Autowired
     private PedidoSeed pedidoSeed;
@@ -31,7 +36,8 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
     private ProdutoSeed produtoSeed;
     //Alteração WDouglas
     @Autowired
-    private CategoriaSeed categoriaSeed;-m
+    private CategoriaSeed categoriaSeed;
+
 
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (started.get()) return;
@@ -46,8 +52,11 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
         started.set(true);
     }
 
+
     private List<AppSeed> seeds() {
         List<AppSeed> list = new LinkedList<>();
+        list.add(grupoSeed);
+        list.add(clienteSeed);
         list.add(pedidoSeed);
         list.add(itemPedidoSeed);
         list.add(produtoSeed);
