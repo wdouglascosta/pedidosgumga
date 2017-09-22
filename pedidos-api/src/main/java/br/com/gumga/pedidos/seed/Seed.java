@@ -21,6 +21,9 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 	@Autowired
 	private PedidoSeed pedidoSeed;
 
+    @Autowired
+    private ItemPedidoSeed itemPedidoSeed;
+
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		if (started.get()) return;
 		
@@ -37,6 +40,7 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 	private List<AppSeed> seeds() {
 		List<AppSeed> list = new LinkedList<>();
 		list.add(pedidoSeed);
+		list.add(itemPedidoSeed);
 		return list;
 	}
 }
