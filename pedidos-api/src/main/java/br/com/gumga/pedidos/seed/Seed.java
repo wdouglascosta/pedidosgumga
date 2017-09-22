@@ -27,9 +27,7 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 			} catch (IOException e) {
 
 
-				
 				throw new RuntimeException(e);
-
 
 
 			}
