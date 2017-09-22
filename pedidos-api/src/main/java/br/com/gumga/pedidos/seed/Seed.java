@@ -18,6 +18,9 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 
 	private AtomicBoolean started = new AtomicBoolean(false);
 
+	@Autowired
+	private PedidoSeed pedidoSeed;
+
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		if (started.get()) return;
 		
@@ -35,6 +38,8 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 	
 	private List<AppSeed> seeds() {
 		List<AppSeed> list = new LinkedList<>();
+		list.add(pedidoSeed);
+
 		return list;
 	}
 
