@@ -35,19 +35,17 @@ public class ClienteSeed implements AppSeed{
     @Transactional
     @Override
     public void loadSeed() throws IOException {
-        //        QueryObject queryObject = new QueryObject();
-//        queryObject.setAq("obj.name = 'Matematica'");
-//        Materia matematica = materiaService.pesquisa(queryObject).getValues().get(0);
-
-//        Aluno aluno = new Aluno();
-//        aluno.setMaterias(Arrays.asList(matematica));
-
+        
+        
+        
         QueryObject queryObject = new QueryObject();
         queryObject.setAq("obj.privilegio= 'Platinum'");
         GrupoClientes grupoClientes = clientesService.pesquisa(queryObject).getValues().get(0);  
         
         Cliente cliente = new Cliente("Maringa", Arrays.asList(grupoClientes), GumgaOi.MARK_PUBLIC);
         clienteService.save(cliente);
+        
+        //ticket 99 feito
         
     }
     
