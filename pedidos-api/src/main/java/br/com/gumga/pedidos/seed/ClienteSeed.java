@@ -42,12 +42,12 @@ public class ClienteSeed implements AppSeed{
 //        Aluno aluno = new Aluno();
 //        aluno.setMaterias(Arrays.asList(matematica));
 
-//        QueryObject queryObject = new QueryObject();
-//        queryObject.setAq("obj.name = 'Platinum'");
-//        GrupoClientes grupoClientes = clientesService.pesquisa(queryObject).getValues().get(0);  
+        QueryObject queryObject = new QueryObject();
+        queryObject.setAq("obj.privilegios = 'Platinum'");
+        GrupoClientes grupoClientes = clientesService.pesquisa(queryObject).getValues().get(0);  
         
         
-        Cliente cliente = new Cliente("Maringa", /*Arrays.asList(grupoClientes)*/ null, GumgaOi.MARK_PUBLIC);
+        Cliente cliente = new Cliente("Maringa", Arrays.asList(grupoClientes), GumgaOi.MARK_PUBLIC);
         clienteService.save(cliente);
         
         
