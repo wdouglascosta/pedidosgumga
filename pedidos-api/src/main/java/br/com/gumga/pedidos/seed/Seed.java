@@ -31,7 +31,7 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
     private ProdutoSeed produtoSeed;
     //Alteração WDouglas
     @Autowired
-    private CategoriaSeed categoriaSeed;
+    private CategoriaSeed categoriaSeed;-m
 
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (started.get()) return;
