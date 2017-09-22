@@ -1,3 +1,5 @@
+//Alteração WDouglas
+
 package br.com.gumga.pedidos.domain.model;
 import io.gumga.domain.GumgaModel; //TODO RETIRAR OS IMPORTS DESNECESSÁRIOS
 import io.gumga.domain.GumgaMultitenancy;
