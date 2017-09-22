@@ -24,5 +24,9 @@ public class PedidoSeed implements AppSeed {
         Pedido pedido1 = new Pedido(GumgaOi.MARK_PUBLIC,null,null);
 
         pedidoService.save(pedido1);
+
+
+        /// Tarefa tal
+
     }
 }
