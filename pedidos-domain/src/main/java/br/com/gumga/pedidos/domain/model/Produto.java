@@ -35,7 +35,7 @@ public class Produto extends GumgaModel<Long> {
     @Column(name = "version")
     private Integer version;
 
-    @Column(name = "categoria")
+    @ManyToOne
 	private Categoria categoria;
 
 
@@ -46,6 +46,7 @@ public class Produto extends GumgaModel<Long> {
 		this.valor = valor;
 		this.categoria = categoria;
 	}
+
 
 	public Integer getVersion() {
 		return version;

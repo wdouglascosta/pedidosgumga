@@ -28,13 +28,16 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 			try {
 				seed.loadSeed();
 			} catch (IOException e) {
+
+
 				throw new RuntimeException(e);
+
+
 			}
 		}
 		
 		started.set(true);
 	}
-	
 	
 	private List<AppSeed> seeds() {
 		List<AppSeed> list = new LinkedList<>();
