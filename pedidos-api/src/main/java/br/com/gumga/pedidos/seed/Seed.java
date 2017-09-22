@@ -1,3 +1,5 @@
+//teste conflito wd
+
 package br.com.gumga.pedidos.seed;
 
 import br.com.gumga.pedidos.domain.model.Produto;
@@ -17,10 +19,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Seed implements ApplicationListener<ContextRefreshedEvent> {
 
-	private AtomicBoolean started = new AtomicBoolean(false);
+    private AtomicBoolean started = new AtomicBoolean(false);
 
-	@Autowired
-	private PedidoSeed pedidoSeed;
+    @Autowired
+    private PedidoSeed pedidoSeed;
 
     @Autowired
     private ItemPedidoSeed itemPedidoSeed;
@@ -31,25 +33,25 @@ public class Seed implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     private CategoriaSeed categoriaSeed;
 
-	public void onApplicationEvent(ContextRefreshedEvent event) {
-		if (started.get()) return;
-		
-		for (AppSeed seed : seeds()) {
-			try {
-				seed.loadSeed();
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-		}
-		started.set(true);
-	}
-	
-	private List<AppSeed> seeds() {
-		List<AppSeed> list = new LinkedList<>();
-		list.add(pedidoSeed);
-		list.add(itemPedidoSeed);
-		list.add(produtoSeed);
-		list.add(categoriaSeed);
-		return list;
-	}
+    public void onApplicationEvent(ContextRefreshedEvent event) {
+        if (started.get()) return;
+
+        for (AppSeed seed : seeds()) {
+            try {
+                seed.loadSeed();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        started.set(true);
+    }
+
+    private List<AppSeed> seeds() {
+        List<AppSeed> list = new LinkedList<>();
+        list.add(pedidoSeed);
+        list.add(itemPedidoSeed);
+        list.add(produtoSeed);
+        list.add(categoriaSeed);
+        return list;
+    }
 }
