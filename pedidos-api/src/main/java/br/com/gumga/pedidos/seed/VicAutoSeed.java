@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 public class VicAutoSeed {
 
     //private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private static final Logger LOG = LoggerFactory.getLogger(Seed.class);
+    private static final Logger LOG = LoggerFactory.getLogger(VicAutoSeed.class);
 
     private static final Random random = new Random(1);
 
@@ -53,7 +53,7 @@ public class VicAutoSeed {
             Object[] result = readValue.stream().map(a -> a.get("word")).toArray();
             return result;
         } catch (Exception e) {
-            Log.info("Problem in getDataMuseWord Query " + s, e);
+            LOG.info("Problem in getDataMuseWord Query " + s, e);
         }
 
         return new Object[0];
@@ -86,7 +86,7 @@ public class VicAutoSeed {
             }
 
         } catch (Exception ex) {
-            Log.error(obj, ex);
+            LOG.error("randomFill "+obj.getClass().getSimpleName(), ex);
         }
     }
 
@@ -130,7 +130,8 @@ public class VicAutoSeed {
                 }
                 toReturn.add(newInstance);
             } catch (Exception ex) {
-                Log.info("problem in getInteligentInstances" + exaple.getClass().getSimpleName(), ex);
+                LOG.info("problem in getInteligentInstances" + exaple.getClass().getSimpleName(), ex);
+                
             }
         }
 
@@ -190,7 +191,6 @@ public class VicAutoSeed {
                 return DICTIONARY[i + 1];
             }
         }
-        Log.info("NOT Fount " + p);
         return p;
 
     }
