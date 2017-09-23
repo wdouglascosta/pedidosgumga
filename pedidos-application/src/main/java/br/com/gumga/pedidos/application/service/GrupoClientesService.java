@@ -12,7 +12,6 @@ import org.hibernate.Hibernate;
 import br.com.gumga.pedidos.application.repository.GrupoClientesRepository;
 import br.com.gumga.pedidos.domain.model.GrupoClientes;
 
-
 @Service
 @Transactional
 public class GrupoClientesService extends GumgaService<GrupoClientes, Long> {
@@ -24,6 +23,10 @@ public class GrupoClientesService extends GumgaService<GrupoClientes, Long> {
     public GrupoClientesService(GrupoClientesRepository repository) {
         super(repository);
         this.repository = repository;
+    }
+
+    public boolean hasData() {
+        return repository.count() > 0;
     }
 
 }

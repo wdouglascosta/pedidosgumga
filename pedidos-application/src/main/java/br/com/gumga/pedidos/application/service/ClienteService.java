@@ -13,6 +13,7 @@ import br.com.gumga.pedidos.application.repository.ClienteRepository;
 import br.com.gumga.pedidos.domain.model.Cliente;
 
 import br.com.gumga.pedidos.domain.model.GrupoClientes;
+import java.util.List;
 
 @Service
 @Transactional
@@ -29,11 +30,17 @@ public class ClienteService extends GumgaService<Cliente, Long> {
 
     @Transactional
     public Cliente loadClienteFat(Long id) {
-    Cliente obj = view(id);
-
+        Cliente obj = view(id);
         Hibernate.initialize(obj.getGrupoClientes());
-
-
-    return obj;
+        return obj;
     }
+
+    public boolean hasData() {
+        return repository.count() > 0;
+    }
+
+    public List listaGrupo() {
+        return repository.listaGrupos();
+    }
+
 }

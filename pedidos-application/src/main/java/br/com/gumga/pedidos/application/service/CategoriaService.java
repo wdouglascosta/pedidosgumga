@@ -28,7 +28,7 @@ public class CategoriaService extends GumgaService<Categoria, Long> {
         this.repository = repository;
     }
 
-    public boolean exists(){
+    public boolean hasData(){
         return repository.count() > 0;
     }
 

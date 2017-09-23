@@ -12,12 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Component
 public class ProdutoSeed implements AppSeed {
+    
+    private final static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Autowired
     private ProdutoService service;
@@ -25,17 +31,24 @@ public class ProdutoSeed implements AppSeed {
     @Autowired
     private CategoriaService categoriaService;
 
-
     @Override
     public void loadSeed() throws IOException {
-        if (service.exists()) {
+        if (service.hasData()) {
+            LOG.info("Data found, skip "+LOG.getName());
             return;
         }
+        Produto exProduto=new Produto();
+        exProduto.setCategoria(new Categoria());
+        List<Produto> inteligentInstances = VicAutoSeed.getInteligentInstances(exProduto, 100);
         List<Categoria> values = categoriaService.pesquisa(new QueryObject()).getValues();
-        
-        service.save(new Produto("Arroz", 10, BigDecimal.TEN,values.get(0)));
-        service.save(new Produto("Feijão", 10, BigDecimal.TEN,values.get(0)));
-        service.save(new Produto("Pão", 10, BigDecimal.TEN,values.get(0)));
+        int i=0;
+        for (Produto p:inteligentInstances){
+            p.setCategoria(values.get((i++)%values.size()));
+            service.save(p);
+        }
 
     }
+    
+    
+    
 }

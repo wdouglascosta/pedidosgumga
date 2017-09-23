@@ -12,7 +12,7 @@ import java.util.List;
 @GumgaMultitenancy
 @Audited
 @Entity(name = "Pedido")
-@Table(name = "Pedido", indexes = {
+@Table(name = "pedido", indexes = {
     @Index(name = "Pedido_gum_oi", columnList = "oi")
 })
 @SequenceGenerator(name = GumgaModel.SEQ_NAME, sequenceName = "SEQ_Pedido")

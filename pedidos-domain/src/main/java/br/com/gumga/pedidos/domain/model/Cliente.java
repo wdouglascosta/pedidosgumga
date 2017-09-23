@@ -33,7 +33,7 @@ public class Cliente extends GumgaModel<Long> {
     @Column(name = "cidade")
     private String cidade;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany()
     private List<GrupoClientes> grupoClientes;
 
     public Cliente() {

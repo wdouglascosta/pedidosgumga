@@ -260,8 +260,8 @@
     <module>pedidos-application</module>
     <module>pedidos-gateway</module>
     <module>pedidos-api</module>
-    <module>pedidos-presentation</module>
+<!--    <module>pedidos-presentation</module>
     <module>pedidos-presentation-webpack</module>
-    <module>pedidos-boot</module>
+    <module>pedidos-boot</module>-->
   </modules>
 </project>

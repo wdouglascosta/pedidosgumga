@@ -15,11 +15,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Component
 public class PedidoSeed implements AppSeed {
+
+    private final static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Autowired
     private PedidoService pedidoService;
@@ -35,25 +40,29 @@ public class PedidoSeed implements AppSeed {
 
     @Override
     public void loadSeed() throws IOException {
-        if (pedidoService.exists()){
+        if (pedidoService.hasData()) {
+            LOG.info("Data found, skip " + LOG.getName());
             return;
         }
+        QueryObject qo = new QueryObject();
+        qo.setPageSize(100000);
         
-        Cliente cliente = clienteService.pesquisa(new QueryObject()).getValues().get(0);
-        
-        Pedido p=new Pedido();
-        p.setCliente(cliente);
-        p.setItens(new ArrayList<>());
-        
-        List<Produto> values = produtoService.pesquisa(new QueryObject()).getValues();
-        
-        for (Produto produto:values){
-            ItemPedido ip=new ItemPedido(4, produto);
+        List<Cliente> clientes = clienteService.pesquisa(qo).getValues();
+        List<Produto> produtos = produtoService.pesquisa(qo).getValues();
 
-            p.getItens().add(itemPedidoService.save(ip));
+        for (int i = 0; i < 100; i++) {
+
+            Pedido p = new Pedido();
+            p.setCliente(clientes.get(VicAutoSeed.getRandomInteger(0, clientes.size())));
+            p.setItens(new ArrayList<>());
+            Integer nProdutos = VicAutoSeed.getRandomInteger(5,10);
+            for (int j=0;j<nProdutos;j++) {
+                ItemPedido ip = new ItemPedido();
+                ip.setProduto(produtos.get(VicAutoSeed.getRandomInteger(0, produtos.size())));
+                VicAutoSeed.randomFill(ip);
+                p.getItens().add(itemPedidoService.save(ip));
+            }
+            pedidoService.save(p);
         }
-        
-        pedidoService.save(p);
-
     }
 }

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @GumgaMultitenancy
 @Audited
 @Entity(name = "Produto")
-@Table(name = "Produto", indexes = {
+@Table(name = "produto", indexes = {
     @Index(name = "Produto_gum_oi", columnList = "oi")
 })
 @SequenceGenerator(name = GumgaModel.SEQ_NAME, sequenceName = "SEQ_Produto")
@@ -28,7 +28,7 @@ public class Produto extends GumgaModel<Long> {
     private String nome;
 
     @Column(name = "quantidade")
-    private int quantidade;
+    private Integer quantidade;
 
     @Column(name = "valor")
     private BigDecimal valor;
@@ -46,6 +46,7 @@ public class Produto extends GumgaModel<Long> {
         this.valor = valor;
         this.categoria = categoria;
     }
+
     public Produto() {
     }
 
@@ -62,11 +63,11 @@ public class Produto extends GumgaModel<Long> {
         this.nome = nome;
     }
 
-    public int getQuantidade() {
+    public Integer getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -78,7 +79,6 @@ public class Produto extends GumgaModel<Long> {
         this.valor = valor;
     }
 
-
     public Categoria getCategoria() {
         return this.categoria;
     }
@@ -86,4 +86,12 @@ public class Produto extends GumgaModel<Long> {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    @Override
+    public String toString() {
+        return "Produto{" + "nome=" + nome + ", quantidade=" + quantidade + ", valor=" + valor + ", categoria=" + categoria + '}';
+    }
+
+    
+    
 }

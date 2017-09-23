@@ -28,11 +28,12 @@ public class ProdutoService extends GumgaService<Produto, Long> {
         this.repository = repository;
     }
 
-    public boolean exists(){
+    public boolean hasData(){
         return repository.count() > 0;
     }
 
     public List<Produto> saveAll(List<Produto> produtos){
         return repository.save(produtos);
     }
+    
 }

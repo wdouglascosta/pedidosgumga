@@ -26,8 +26,7 @@ public class ItemPedidoService extends GumgaService<ItemPedido, Long> {
         return repository.save(itemPedidos);
     }
 
-    @Transactional
-    public Boolean exists(){
+    public boolean hasData() {
         return repository.count() > 0;
     }
 }

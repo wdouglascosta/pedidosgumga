@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @GumgaMultitenancy
 @Audited
 @Entity(name = "Categoria")
-@Table(name = "Categoria", indexes = {
+@Table(name = "categoria", indexes = {
     @Index(name = "Categoria_gum_oi", columnList = "oi")
 })
 @SequenceGenerator(name = GumgaModel.SEQ_NAME, sequenceName = "SEQ_Categoria")
@@ -44,4 +44,11 @@ public class Categoria extends GumgaModel<Long> {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    @Override
+    public String toString() {
+        return "Categoria{" + "nome=" + nome + '}';
+    }
+    
+    
 }

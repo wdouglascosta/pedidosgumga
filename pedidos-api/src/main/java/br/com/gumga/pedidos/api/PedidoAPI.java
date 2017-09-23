@@ -1,6 +1,8 @@
 package br.com.gumga.pedidos.api;
 
+import br.com.gumga.pedidos.application.service.ClienteService;
 import br.com.gumga.pedidos.application.service.PedidoService;
+import br.com.gumga.pedidos.domain.model.Cliente;
 import br.com.gumga.pedidos.domain.model.Pedido;
 import io.gumga.application.GumgaService;
 import io.gumga.presentation.GumgaAPI;
@@ -30,6 +32,11 @@ public class PedidoAPI extends GumgaAPI<Pedido, Long> {
 
     @Autowired
     public PedidoAPI(PedidoService service) {
-    super(service);
-}
+        super(service);
+    }
+
+    @Override
+    public Pedido load(@PathVariable Long id) {
+        return ((PedidoService) service).loadPedidoFat(id);
+    }
 }
