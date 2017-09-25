@@ -39,6 +39,7 @@ public class ProdutoSeed implements AppSeed {
         }
         Produto exProduto=new Produto();
         exProduto.setCategoria(new Categoria());
+        exProduto.setQuantidade(1000);
         List<Produto> inteligentInstances = VicAutoSeed.getInteligentInstances(exProduto, 100);
         List<Categoria> values = categoriaService.pesquisa(new QueryObject()).getValues();
         int i=0;

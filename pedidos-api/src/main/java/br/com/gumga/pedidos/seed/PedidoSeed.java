@@ -58,9 +58,10 @@ public class PedidoSeed implements AppSeed {
             Integer nProdutos = VicAutoSeed.getRandomInteger(5,10);
             for (int j=0;j<nProdutos;j++) {
                 ItemPedido ip = new ItemPedido();
+                ip.setQuantidade(VicAutoSeed.getRandomInteger(1,10));
                 ip.setProduto(produtos.get(VicAutoSeed.getRandomInteger(0, produtos.size())));
                 VicAutoSeed.randomFill(ip);
-                p.getItens().add(itemPedidoService.save(ip));
+                p.getItens().add(ip);
             }
             pedidoService.save(p);
         }
