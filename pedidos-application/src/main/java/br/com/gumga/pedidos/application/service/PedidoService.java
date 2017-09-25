@@ -1,8 +1,12 @@
 package br.com.gumga.pedidos.application.service;
 
+import br.com.gumga.pedidos.application.repository.ItemPedidoRepository;
 import br.com.gumga.pedidos.application.repository.PedidoRepository;
+import br.com.gumga.pedidos.application.repository.ProdutoRepository;
 import br.com.gumga.pedidos.domain.model.Cliente;
+import br.com.gumga.pedidos.domain.model.ItemPedido;
 import br.com.gumga.pedidos.domain.model.Pedido;
+import br.com.gumga.pedidos.domain.model.Produto;
 import io.gumga.application.GumgaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +23,10 @@ public class PedidoService extends GumgaService<Pedido, Long> {
 
     private final static Logger LOG = LoggerFactory.getLogger(PedidoService.class);
     private final PedidoRepository repository;
+    @Autowired
+    private ItemPedidoRepository itemPedidoRepository;
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
     @Autowired
     public PedidoService(PedidoRepository repository) {
@@ -40,5 +48,20 @@ public class PedidoService extends GumgaService<Pedido, Long> {
         Pedido obj = view(id);
         Hibernate.initialize(obj.getItens());
         return obj;
+    }
+
+
+    @Override
+    @Transactional
+    public Pedido save(Pedido resource) {
+        Pedido salvo = repository.save(resource);
+
+        for (ItemPedido ip: resource.getItens()){
+            itemPedidoRepository.save(ip);
+            Produto p=produtoRepository.findOne(ip.getProduto().getId());
+            p.setQuantidade(p.getQuantidade()-ip.getQuantidade());
+        }
+
+        return salvo;
     }
 }

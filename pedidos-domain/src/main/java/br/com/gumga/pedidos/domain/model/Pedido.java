@@ -23,7 +23,7 @@ public class Pedido extends GumgaModel<Long> {
     private Integer version;
 
     @OneToMany
-    @JsonIgnoreProperties({"pedido"})
+  //  @JsonIgnoreProperties({"pedido"})
     private List<ItemPedido> itens;
 
     @ManyToOne
