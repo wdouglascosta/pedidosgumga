@@ -45,6 +45,7 @@ public class ProdutoSeed implements AppSeed {
         int i=0;
         for (Produto p:inteligentInstances){
             p.setCategoria(values.get((i++)%values.size()));
+
             service.save(p);
         }
 

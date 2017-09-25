@@ -29,7 +29,16 @@ public class Pedido extends GumgaModel<Long> {
     @ManyToOne
     private Cliente cliente;
 
+    @Enumerated(EnumType.STRING)
+    private TipoOperacao tipoOperacao;
+
     public Pedido() {
+    }
+
+    public Pedido(List<ItemPedido> itens, Cliente cliente, TipoOperacao tipoOperacao) {
+        this.itens = itens;
+        this.cliente = cliente;
+        this.tipoOperacao = tipoOperacao;
     }
 
     public Pedido(List<ItemPedido> itens, Cliente cliente) {
@@ -51,5 +60,13 @@ public class Pedido extends GumgaModel<Long> {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public TipoOperacao getTipoOperacao() {
+        return tipoOperacao;
+    }
+
+    public void setTipoOperacao(TipoOperacao tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
     }
 }

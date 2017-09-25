@@ -3,10 +3,7 @@ package br.com.gumga.pedidos.application.service;
 import br.com.gumga.pedidos.application.repository.ItemPedidoRepository;
 import br.com.gumga.pedidos.application.repository.PedidoRepository;
 import br.com.gumga.pedidos.application.repository.ProdutoRepository;
-import br.com.gumga.pedidos.domain.model.Cliente;
-import br.com.gumga.pedidos.domain.model.ItemPedido;
-import br.com.gumga.pedidos.domain.model.Pedido;
-import br.com.gumga.pedidos.domain.model.Produto;
+import br.com.gumga.pedidos.domain.model.*;
 import io.gumga.application.GumgaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,9 +54,16 @@ public class PedidoService extends GumgaService<Pedido, Long> {
         Pedido salvo = repository.save(resource);
 
         for (ItemPedido ip: resource.getItens()){
-            itemPedidoRepository.save(ip);
             Produto p=produtoRepository.findOne(ip.getProduto().getId());
-            p.setQuantidade(p.getQuantidade()-ip.getQuantidade());
+            if (TipoOperacao.VENDA.equals(salvo.getTipoOperacao())) {
+                p.setQuantidade(p.getQuantidade() - ip.getQuantidade());
+            itemPedidoRepository.save(ip);
+            }
+
+            if (TipoOperacao.COMPRA.equals(salvo.getTipoOperacao())){
+                p.setQuantidade(p.getQuantidade() + ip.getQuantidade());
+            itemPedidoRepository.save(ip);
+            }
         }
 
         return salvo;

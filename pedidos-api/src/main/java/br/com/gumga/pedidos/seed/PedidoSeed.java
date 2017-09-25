@@ -4,10 +4,7 @@ import br.com.gumga.pedidos.application.service.ClienteService;
 import br.com.gumga.pedidos.application.service.ItemPedidoService;
 import br.com.gumga.pedidos.application.service.PedidoService;
 import br.com.gumga.pedidos.application.service.ProdutoService;
-import br.com.gumga.pedidos.domain.model.Cliente;
-import br.com.gumga.pedidos.domain.model.ItemPedido;
-import br.com.gumga.pedidos.domain.model.Pedido;
-import br.com.gumga.pedidos.domain.model.Produto;
+import br.com.gumga.pedidos.domain.model.*;
 import io.gumga.core.QueryObject;
 import io.gumga.domain.domains.GumgaOi;
 import io.gumga.domain.seed.AppSeed;
@@ -55,9 +52,15 @@ public class PedidoSeed implements AppSeed {
             Pedido p = new Pedido();
             p.setCliente(clientes.get(VicAutoSeed.getRandomInteger(0, clientes.size())));
             p.setItens(new ArrayList<>());
+
+            p.setTipoOperacao(TipoOperacao.COMPRA);
+
             Integer nProdutos = VicAutoSeed.getRandomInteger(5,10);
+
             for (int j=0;j<nProdutos;j++) {
+
                 ItemPedido ip = new ItemPedido();
+
                 ip.setQuantidade(VicAutoSeed.getRandomInteger(1,10));
                 ip.setProduto(produtos.get(VicAutoSeed.getRandomInteger(0, produtos.size())));
                 VicAutoSeed.randomFill(ip);
