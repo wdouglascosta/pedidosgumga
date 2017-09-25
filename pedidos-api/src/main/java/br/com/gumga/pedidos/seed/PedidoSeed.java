@@ -4,10 +4,7 @@ import br.com.gumga.pedidos.application.service.ClienteService;
 import br.com.gumga.pedidos.application.service.ItemPedidoService;
 import br.com.gumga.pedidos.application.service.PedidoService;
 import br.com.gumga.pedidos.application.service.ProdutoService;
-import br.com.gumga.pedidos.domain.model.Cliente;
-import br.com.gumga.pedidos.domain.model.ItemPedido;
-import br.com.gumga.pedidos.domain.model.Pedido;
-import br.com.gumga.pedidos.domain.model.Produto;
+import br.com.gumga.pedidos.domain.model.*;
 import io.gumga.core.QueryObject;
 import io.gumga.domain.domains.GumgaOi;
 import io.gumga.domain.seed.AppSeed;
@@ -25,6 +22,8 @@ import org.slf4j.LoggerFactory;
 public class PedidoSeed implements AppSeed {
 
     private final static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+    private TpPedido tipoOld;
 
     @Autowired
     private PedidoService pedidoService;
@@ -55,6 +54,10 @@ public class PedidoSeed implements AppSeed {
             Pedido p = new Pedido();
             p.setCliente(clientes.get(VicAutoSeed.getRandomInteger(0, clientes.size())));
             p.setItens(new ArrayList<>());
+
+            p.setTipoPedido(TpPedido.COMPRA);
+
+
             Integer nProdutos = VicAutoSeed.getRandomInteger(5,10);
             for (int j=0;j<nProdutos;j++) {
                 ItemPedido ip = new ItemPedido();
