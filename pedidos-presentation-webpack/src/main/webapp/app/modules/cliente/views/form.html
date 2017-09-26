@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel gmd">
+            <div class="panel-heading"><label class="control-label" gumga-translate-tag="cliente.title"></label>
+            </div>
+            <div class="panel-body">
+                <form name="ClienteForm" gumga-form novalidate>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+		
+            <gmd-input>
+                <input
+                        class="form-control gmd"
+                        type="text"
+                        name="nome"
+                        gumga-error
+                        ng-model="cliente.data.nome"
+                />
+                <span class="bar"></span>
+                <label
+                        class="control-label"
+                        gumga-translate-tag="cliente.nome">nome</label>
+            </gmd-input>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+		
+            <gmd-input>
+                <input
+                        class="form-control gmd"
+                        type="text"
+                        name="cidade"
+                        gumga-error
+                        ng-model="cliente.data.cidade"
+                />
+                <span class="bar"></span>
+                <label
+                        class="control-label"
+                        gumga-translate-tag="cliente.cidade">cidade</label>
+            </gmd-input>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+		
+
+    <div class="col-md-6">
+        <label for="grupoClientes" gumga-translate-tag="grupoclientes.title"></label>
+    </div>
+    
+    <div class="col-md-6">
+        <label for="cliente.grupoClientes" gumga-translate-tag="cliente.grupoClientes"></label>
+    </div>
+
+	<div class="full-width-without-padding">
+	    <gumga-many-to-many 
+	            left-list="grupoclientes.data"
+	            right-list="cliente.data.grupoClientes"
+	            left-search="grupoclientes.methods.asyncSearch('nomeGrupo', param)"
+	            filter-parameters="nomeGrupo"
+	            post-method="grupoclientes.methods.save(value)"
+                gumga-model-error="grupoclientesConfig"
+	            authorize-add="true">
+	        <left-field>{{$value.nomeGrupo}}</left-field>
+	        <right-field>{{$value.nomeGrupo}}</right-field>
+	    </gumga-many-to-many>
+	</div>
+	
+        </div>
+    </div>
+</div>
+                    <gumga-errors label="Lista de erros" title="Lista de erros"></gumga-errors>
+                    <gumga-form-buttons
+                            class="gmd raised"
+                            back="cliente.list"
+                            submit="cliente.methods.put(cliente.data)"
+                            position="right"
+                            valid="ClienteForm.$valid"
+                            confirm-dirty="true"
+                            continue="continue">
+                    </gumga-form-buttons>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

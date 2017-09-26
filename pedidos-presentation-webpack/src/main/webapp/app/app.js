@@ -43,6 +43,11 @@ angular.module('app.core', [
   ,'app.gumgatagdefinition'
   ,'app.gumgacustomfield'
   ,'app.welcome'
+        ,'app.categoria'
+        ,'app.produto'
+        ,'app.grupoclientes'
+        ,'app.cliente'
+        ,'app.pedido'
   //FIMINJECTIONS
   ])
   .run(['$rootScope', '$timeout', function($rootScope, $timeout){
@@ -105,6 +110,46 @@ angular.module('app.core', [
            url: '/gumgacustomfield',
            templateUrl: tempĺateBase
       })
+        .state('categoria', {
+        data: {
+            id: 1
+        }, 
+            url: '/categoria',
+            templateUrl: tempĺateBase
+        })
+
+        .state('produto', {
+        data: {
+            id: 1
+        }, 
+            url: '/produto',
+            templateUrl: tempĺateBase
+        })
+
+        .state('grupoclientes', {
+        data: {
+            id: 1
+        }, 
+            url: '/grupoclientes',
+            templateUrl: tempĺateBase
+        })
+
+        .state('cliente', {
+        data: {
+            id: 1
+        }, 
+            url: '/cliente',
+            templateUrl: tempĺateBase
+        })
+
+        .state('pedido', {
+        data: {
+            id: 1
+        }, 
+            url: '/pedido',
+            templateUrl: tempĺateBase
+        })
+
       //FIMROUTE
 
 

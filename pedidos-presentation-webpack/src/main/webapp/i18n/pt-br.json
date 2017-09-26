@@ -12,6 +12,64 @@
   ,"edit": "Editar Coisa"
   ,"insert": "Inserir Coisa"
   }
+    ,"categoria":{
+        "title":"Categoria"
+        ,"menulabel": "Categoria"
+        ,"edit": "Editar Categoria"
+        ,"insert": "Inserir Categoria"
+        ,"list": "Consulta Categoria"
+        ,"id": "id"
+        ,"nome":"Nome"
+    }
+
+    ,"produto":{
+        "title":"Produto"
+        ,"menulabel": "Produto"
+        ,"edit": "Editar Produto"
+        ,"insert": "Inserir Produto"
+        ,"list": "Consulta Produto"
+        ,"id": "id"
+        ,"nome":"Nome"
+        ,"quantidade":"Quantidade"
+        ,"valor":"Valor"
+        ,"categoria":"Categoria"
+    }
+
+    ,"grupoclientes":{
+        "title":"GrupoClientes"
+        ,"menulabel": "GrupoClientes"
+        ,"edit": "Editar GrupoClientes"
+        ,"insert": "Inserir GrupoClientes"
+        ,"list": "Consulta GrupoClientes"
+        ,"id": "id"
+        ,"nomegrupo":"NomeGrupo"
+        ,"privilegio":"Privilegio"
+    }
+
+    ,"cliente":{
+        "title":"Cliente"
+        ,"menulabel": "Cliente"
+        ,"edit": "Editar Cliente"
+        ,"insert": "Inserir Cliente"
+        ,"list": "Consulta Cliente"
+        ,"id": "id"
+        ,"nome":"Nome"
+        ,"cidade":"Cidade"
+        ,"grupoclientes":"GrupoClientes"
+    }
+
+    ,"pedido":{
+        "title":"Pedido"
+        ,"menulabel": "Pedido"
+        ,"edit": "Editar Pedido"
+        ,"insert": "Inserir Pedido"
+        ,"list": "Consulta Pedido"
+        ,"id": "id"
+        ,"itens":"Itens"
+        ,"cliente":"Cliente"
+        ,"tipopedido":"TipoPedido"
+    }
+
 ,"address": {
   "cep": "CEP"
 ,"numero": "Número"

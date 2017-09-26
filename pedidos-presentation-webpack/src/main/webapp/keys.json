@@ -3,4 +3,9 @@
   "CUSTOMFIELDS",
   "TAGS",
   "CONFIGURATION"
+,"CRUD-Categoria"
+,"CRUD-Produto"
+,"CRUD-GrupoClientes"
+,"CRUD-Cliente"
+,"CRUD-Pedido"
 ]

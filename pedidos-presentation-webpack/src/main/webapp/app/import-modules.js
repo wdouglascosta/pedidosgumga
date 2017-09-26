@@ -5,4 +5,9 @@ require("./modules/gumgatagdefinition/module");
 require("./modules/gumgacustomfield/module");
 require("./modules/welcome/module");
 require("./modules/account/module");
+require('./modules/categoria/module');
+require('./modules/produto/module');
+require('./modules/grupoclientes/module');
+require('./modules/cliente/module');
+require('./modules/pedido/module');
 //FIMREQUIRE
