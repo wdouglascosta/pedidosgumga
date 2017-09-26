@@ -5,70 +5,49 @@
             </div>
             <div class="panel-body">
                 <form name="PedidoForm" gumga-form novalidate>
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-		
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
 
-	<div class="full-width-without-padding">
-	    <label for="itens" gumga-translate-tag="pedido.itens"></label>
-	
-		<gumga-one-to-many
-		        children="pedido.data.itens"
-		        template-url="app/modules/pedido/views/modalItemPedido.html"
-		        displayable-property="quantidade"
-                gumga-model-error="itensConfig"
-		        controller="ModalItemPedidoController">
-		</gumga-one-to-many>
-	</div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-		
-		<label gumga-translate-tag="pedido.cliente">cliente</label>
-	    <gumga-many-to-one
-				class="gmd"
-	            name="cliente"
-	            value="pedido.data.cliente"
-	            search-method="cliente.methods.asyncSearch('nome', param)"
-	            field="nome"
-	            authorize-add="false"
-	            display-info="false"
-                gumga-model-error="clienteConfig"
-	            post-method="cliente.methods.asyncPost(value, 'nome')">
-	    </gumga-many-to-one>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-		
-    <gmd-select
-			ng-model="pedido.data.tipoPedido"
-			placeholder="{{'tipoPedido'|gumgaTranslate:'pedido'}}">
-        <gmd-option
-				ng-repeat="data in valueTpPedido"
-				ng-value="data.value"
-				ng-label="data.label">
-            {{data.label}}
-        </gmd-option>
-    </gmd-select>
-        </div>
-    </div>
-</div>
+                                <label gumga-translate-tag="pedido.cliente">cliente</label>
+                                <gumga-many-to-one class="gmd" name="cliente" value="pedido.data.cliente" search-method="cliente.methods.asyncSearch('nome', param)"
+                                    field="nome" authorize-add="false" display-info="false" gumga-model-error="clienteConfig"
+                                    post-method="cliente.methods.asyncPost(value, 'nome')">
+                                </gumga-many-to-one>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+
+                                <gmd-select ng-model="pedido.data.tipoPedido" placeholder="{{'tipoPedido'|gumgaTranslate:'pedido'}}">
+                                    <gmd-option ng-repeat="data in valueTpPedido" ng-value="data.value" ng-label="data.label">
+                                        {{data.label}}
+                                    </gmd-option>
+                                </gmd-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+
+
+                                <div class="full-width-without-padding">
+                                    <label for="itens" gumga-translate-tag="pedido.itens"></label>
+
+                                    <gumga-one-to-many children="pedido.data.itens" template-url="app/modules/pedido/views/modalItemPedido.html" displayable-property="resumo"
+                                        gumga-model-error="itensConfig" controller="ModalItemPedidoController">
+                                    </gumga-one-to-many>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <gumga-errors label="Lista de erros" title="Lista de erros"></gumga-errors>
-                    <gumga-form-buttons
-                            class="gmd raised"
-                            back="pedido.list"
-                            submit="pedido.methods.put(pedido.data)"
-                            position="right"
-                            valid="PedidoForm.$valid"
-                            confirm-dirty="true"
-                            continue="continue">
+                    <gumga-form-buttons class="gmd raised" back="pedido.list" submit="pedido.methods.put(pedido.data)" position="right" valid="PedidoForm.$valid"
+                        confirm-dirty="true" continue="continue">
                     </gumga-form-buttons>
                 </form>
             </div>

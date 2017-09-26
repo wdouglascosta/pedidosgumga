@@ -12,8 +12,6 @@ function PedidoListController($scope, PedidoService, gumgaController) {
   });
 
   $scope.actions = [
-    { key: 'option1', label: 'option1' },
-    { key: 'option2', label: 'option2' }
   ];
 
   $scope.search = function(field, param) {
@@ -30,16 +28,16 @@ function PedidoListController($scope, PedidoService, gumgaController) {
   }
 
   $scope.tableConfig = {
-    columns: 'itens ,button',
+    columns: 'cliente ,button',
     checkbox: true,
     selection: 'multi',
     materialTheme: true,
     itemsPerPage: [5, 10, 15, 30],
     columnsConfig: [{
-      name: 'itens',
-      title: '<span gumga-translate-tag="pedido.itens"> itens </span>',
-      content: '{{$value.itens }}',
-      sortField: 'itens'
+      name: 'cliente',
+      title: '<span gumga-translate-tag="cliente.title"> Clientes </span>',
+      content: '{{$value.cliente.nome }}',
+      sortField: 'cliente.nome'
     }, {
       name: 'button',
       title: ' ',

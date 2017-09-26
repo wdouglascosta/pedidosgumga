@@ -30,7 +30,7 @@ function ProdutoListController($scope, ProdutoService, gumgaController) {
   }
 
   $scope.tableConfig = {
-    columns: 'nome ,button',
+    columns: 'nome , quantidade, categoria,button',
     checkbox: true,
     selection: 'multi',
     materialTheme: true,
@@ -40,7 +40,21 @@ function ProdutoListController($scope, ProdutoService, gumgaController) {
       title: '<span gumga-translate-tag="produto.nome"> nome </span>',
       content: '{{$value.nome }}',
       sortField: 'nome'
-    }, {
+    },
+    {
+      name: 'quantidade',
+      title: '<span gumga-translate-tag="produto.quantidade"> Quantidade </span>',
+      content: '{{$value.quantidade }}',
+      sortField: 'categoria.quantidade'
+    },
+    {
+      name: 'categoria',
+      title: '<span gumga-translate-tag="categoria.title"> Categoria </span>',
+      content: '{{$value.categoria.nome }}',
+      sortField: 'categoria.nome'
+    },
+    
+    {
       name: 'button',
       title: ' ',
       content: '<span class="pull-right"><a class="btn btn-primary btn-sm" ui-sref="produto.edit({id: {{$value.id}} })"><i class="glyphicon glyphicon-pencil"></i></a></span>'

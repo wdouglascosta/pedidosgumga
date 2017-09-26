@@ -34,3 +34,4 @@ function PedidoFormController(PedidoService, $state, entity, $scope, gumgaContro
 }
 
 module.exports = PedidoFormController;
+
