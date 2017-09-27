@@ -30,7 +30,7 @@ public class Pedido extends GumgaModel<Long> {
     private Cliente cliente;
 
     @Enumerated(EnumType.STRING)
-    private TipoOperacao tipoOperacao;
+    private TpPedido tipoPedido;
 
     public Pedido() {
     }
@@ -62,11 +62,11 @@ public class Pedido extends GumgaModel<Long> {
         this.cliente = cliente;
     }
 
-    public TipoOperacao getTipoOperacao() {
-        return tipoOperacao;
+    public TpPedido getTipoPedido() {
+        return tipoPedido;
     }
 
-    public void setTipoOperacao(TipoOperacao tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
+    public void setTipoPedido(TpPedido tipoPedido) {
+        this.tipoPedido = tipoPedido;
     }
 }

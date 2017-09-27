@@ -55,15 +55,16 @@ public class PedidoService extends GumgaService<Pedido, Long> {
 
         for (ItemPedido ip: resource.getItens()){
             Produto p=produtoRepository.findOne(ip.getProduto().getId());
-            if (TipoOperacao.VENDA.equals(salvo.getTipoOperacao())) {
-                p.setQuantidade(p.getQuantidade() - ip.getQuantidade());
-            itemPedidoRepository.save(ip);
-            }
 
-            if (TipoOperacao.COMPRA.equals(salvo.getTipoOperacao())){
-                p.setQuantidade(p.getQuantidade() + ip.getQuantidade());
-            itemPedidoRepository.save(ip);
+
+            if (TpPedido.VENDA.equals(salvo.getTipoPedido())) {
+                p.setQuantidade(p.getQuantidade()-ip.getQuantidade());
             }
+            else {
+                p.setQuantidade(p.getQuantidade()+ip.getQuantidade());
+            }
+            itemPedidoRepository.save(ip);
+
         }
 
         return salvo;

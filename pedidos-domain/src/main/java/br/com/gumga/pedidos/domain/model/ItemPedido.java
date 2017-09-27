@@ -1,5 +1,6 @@
 package br.com.gumga.pedidos.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.gumga.domain.GumgaModel;
 import io.gumga.domain.GumgaMultitenancy;
@@ -61,6 +62,12 @@ public class ItemPedido extends GumgaModel<Long> {
 
     public void setValorUnitario(BigDecimal valorUnitario) {
         this.valorUnitario = valorUnitario;
+    }
+
+
+    @JsonGetter
+    public String getResumo(){
+        return produto.getNome()+" "+quantidade;
     }
 
 }

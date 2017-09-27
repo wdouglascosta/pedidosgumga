@@ -1,4 +1,4 @@
 'use strict';
 window.APILocation = {
-    apiLocation: location.origin+"/pedidos-api"
+    apiLocation: "http://localhost:8080/pedidos-api"
 };

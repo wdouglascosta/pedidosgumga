@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel gmd">
+            <div class="panel-heading"><label class="control-label" gumga-translate-tag="pedido"></label>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    <div class="col-sm-5">
+                        <a ui-sref="pedido.insert" class="btn gmd raised btn-primary">
+                            <i class="glyphicon glyphicon-plus"></i>Novo
+                        </a>
+
+                        <button type="button" class="btn gmd raised btn-danger" ng-click="pedido.methods.delete(selectedValues)" gumga-confirm="Deseja remover?">
+                            <i class="glyphicon glyphicon-trash"></i>Remover
+                        </button>
+                    </div>
+
+                    <div class="col-sm-7">
+                        <gumga-query search="pedido.methods.search(field,param)" advanced-search="pedido.methods.advancedSearch(param)" saved-filters="pedido.methods.getQuery(page)">
+
+                            <search-field label="cliente" field="cliente"></search-field>
+                            <search-field label="tipoPedido" field="tipopedido"></search-field>
+
+                            <advanced-search-field type="string" label="cliente" field="cliente"></advanced-search-field>
+                            <advanced-search-field type="string" label="tipoPedido" field="tipopedido"></advanced-search-field>
+                        </gumga-query>
+                    </div>
+                </div>
+
+                <br>
+                
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <gumga-list class="table-striped table-condensed" sort="pedido.methods.sort(field, dir)" data="pedido.data" configuration="tableConfig"
+                            page-size="pedido.pageSize" page-position="bottom" page-align="flex-end" count="pedido.count" page-model="page"
+                            on-page-change="pedido.methods.get(page, pageSize)">
+                        </gumga-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

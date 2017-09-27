@@ -23,6 +23,8 @@ public class PedidoSeed implements AppSeed {
 
     private final static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
+    private TpPedido tipoOld;
+
     @Autowired
     private PedidoService pedidoService;
 
@@ -53,7 +55,10 @@ public class PedidoSeed implements AppSeed {
             p.setCliente(clientes.get(VicAutoSeed.getRandomInteger(0, clientes.size())));
             p.setItens(new ArrayList<>());
 
-            p.setTipoOperacao(TipoOperacao.COMPRA);
+
+            p.setTipoPedido(TpPedido.COMPRA);
+
+
 
             Integer nProdutos = VicAutoSeed.getRandomInteger(5,10);
 

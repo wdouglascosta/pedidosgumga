@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel gmd">
+            <div class="panel-heading"><label class="control-label" gumga-translate-tag="produto"></label>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    <div class="col-sm-5">
+                        <a ui-sref="produto.insert" class="btn gmd raised btn-primary">
+                            <i class="glyphicon glyphicon-plus"></i>Novo
+                        </a>
+
+                        <button type="button" class="btn gmd raised btn-danger" ng-click="produto.methods.delete(selectedValues)" gumga-confirm="Deseja remover?">
+                            <i class="glyphicon glyphicon-trash"></i>Remover
+                        </button>
+                    </div>
+
+                    <div class="col-sm-7">
+                        <gumga-query search="produto.methods.search(field,param)" advanced-search="produto.methods.advancedSearch(param)" saved-filters="produto.methods.getQuery(page)">
+                            <search-field label="nome" field="nome"></search-field>
+                            <search-field label="quantidade" field="quantidade"></search-field>
+                            <search-field label="valor" field="valor"></search-field>
+                            <search-field label="categoria" field="categoria.nome"></search-field>
+                            <advanced-search-field type="string" label="nome" field="nome"></advanced-search-field>
+                            <advanced-search-field type="number" label="quantidade" field="quantidade"></advanced-search-field>
+                            <advanced-search-field type="number" label="valor" field="valor"></advanced-search-field>
+                            <advanced-search-field type="string" label="categoria" field="categoria.nome"></advanced-search-field>
+                        </gumga-query>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <gumga-query-action entity="produto" selected="selectedValues" query="query" beyond="beyond" actions="actions" on-action="action(queryaction)">
+                        </gumga-query-action>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <gumga-list class="table-striped table-condensed" sort="produto.methods.sort(field, dir)" data="produto.data" configuration="tableConfig"
+                            page-size="produto.pageSize" page-position="bottom" page-align="flex-end" count="produto.count" page-model="page"
+                            on-page-change="produto.methods.get(page, pageSize)">
+                        </gumga-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

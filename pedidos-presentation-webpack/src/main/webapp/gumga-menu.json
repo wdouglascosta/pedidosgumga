@@ -1,6 +1,106 @@
 [
 	{
 		"type": "item",
+		"label": "Pedido",
+		"key": "CRUD-Pedido",
+		"children": [
+				{
+					"type": "item",
+					"label": "Inserir",
+					"state": "pedido.insert",
+					"key": "CRUD-Pedido"
+				},
+				{
+					"type": "item",
+					"label": "Listagem",
+					"state": "pedido.list",
+					"key": "CRUD-Pedido"
+				}
+			]
+	},
+
+	{
+		"type": "item",
+		"label": "Cliente",
+		"key": "CRUD-Cliente",
+		"children": [
+				{
+					"type": "item",
+					"label": "Inserir",
+					"state": "cliente.insert",
+					"key": "CRUD-Cliente"
+				},
+				{
+					"type": "item",
+					"label": "Listagem",
+					"state": "cliente.list",
+					"key": "CRUD-Cliente"
+				}
+			]
+	},
+
+	{
+		"type": "item",
+		"label": "GrupoClientes",
+		"key": "CRUD-GrupoClientes",
+		"children": [
+				{
+					"type": "item",
+					"label": "Inserir",
+					"state": "grupoclientes.insert",
+					"key": "CRUD-GrupoClientes"
+				},
+				{
+					"type": "item",
+					"label": "Listagem",
+					"state": "grupoclientes.list",
+					"key": "CRUD-GrupoClientes"
+				}
+			]
+	},
+
+	{
+		"type": "item",
+		"label": "Produto",
+		"key": "CRUD-Produto",
+		"children": [
+				{
+					"type": "item",
+					"label": "Inserir",
+					"state": "produto.insert",
+					"key": "CRUD-Produto"
+				},
+				{
+					"type": "item",
+					"label": "Listagem",
+					"state": "produto.list",
+					"key": "CRUD-Produto"
+				}
+			]
+	},
+
+	{
+		"type": "item",
+		"label": "Categoria",
+		"key": "CRUD-Categoria",
+		"children": [
+				{
+					"type": "item",
+					"label": "Inserir",
+					"state": "categoria.insert",
+					"key": "CRUD-Categoria"
+				},
+				{
+					"type": "item",
+					"label": "Listagem",
+					"state": "categoria.list",
+					"key": "CRUD-Categoria"
+				}
+			]
+	},
+
+	{
+		"type": "item",
 		"label": "Welcome",
 		"state": "welcome.home",
 		"icon": "home",
